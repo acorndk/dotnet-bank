@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using dotnet_bank.Menu;
+using System;
 
 namespace dotnet_bank.Helpers
 {
@@ -14,7 +11,29 @@ namespace dotnet_bank.Helpers
             Console.WriteLine("::Login Page::");
         }
 
-        public static void DisplayMainMenu()
+        public static void DisplayExit()
+        {
+            Console.WriteLine("Thank you for using dotnet-bank!");
+            Console.ReadKey();
+        }
+
+        public static void DisplayMenu(MenuContext context)
+        {
+            switch (context)
+            {
+                case MenuContext.MainMenu:
+                    DisplayMainMenu();
+                    break;
+                case MenuContext.Customers:
+                    DisplayCustomersMenu();
+                    break;
+                case MenuContext.Accounts:
+                    DisplayAccountsMenu();
+                    break;
+            }
+        }
+
+        private static void DisplayMainMenu()
         {
             Console.WriteLine("\n::Main Menu::");
             Console.WriteLine("1. Customers");
@@ -24,11 +43,25 @@ namespace dotnet_bank.Helpers
             Console.WriteLine("5. Account Statement");
             Console.WriteLine("0. Exit");
         }
-
-        public static void DisplayExit()
+        
+        private static void DisplayCustomersMenu()
         {
-            Console.WriteLine("Thank you for using dotnet-bank!");
-            Console.ReadKey();
+            Console.WriteLine("\n::Customers Menu::");
+            Console.WriteLine("1. Add Customer");
+            Console.WriteLine("2. Delete Customer");
+            Console.WriteLine("3. Update Customer");
+            Console.WriteLine("4. View Customers");
+            Console.WriteLine("0. Back to Main Menu");
+        }
+
+        private static void DisplayAccountsMenu()
+        {
+            Console.WriteLine("\n::Accounts Menu::");
+            Console.WriteLine("1. Add Account");
+            Console.WriteLine("2. Delete Account");
+            Console.WriteLine("3. Update Account");
+            Console.WriteLine("4. View Accounts");
+            Console.WriteLine("0. Back to Main Menu");
         }
     }
 }

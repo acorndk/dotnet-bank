@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using dotnet_bank.Helpers;
+using System;
 
 namespace dotnet_bank.Menu
 {
     public sealed class MenuManager
     {
-        public int MenuChoice;
+        public int MenuChoice { get; set; }
 
         public MenuContext Context { get; set; }
 
@@ -18,44 +15,157 @@ namespace dotnet_bank.Menu
             Context = MenuContext.None;
         }
 
-        public void SetMenuChoice()
+        public void ExecuteMenu()
         {
-            Console.Write("Enter choice");
-            MenuChoice = int.Parse(Console.ReadLine());
+            var repeatMenu = true;
+
+            do
+            {
+                Helper.DisplayMenu(MenuContext.MainMenu);
+
+                if (IsMenuChoiceValid(MenuContext.MainMenu, GetMenuChoice()))
+                {
+                    ExecuteChoice();
+                    repeatMenu = MenuChoice != BankConstants.ExitChoice;
+                }
+            }
+            while (repeatMenu);
+        }
+        
+        public int GetMenuChoice()
+        {
+            Console.Write("Enter choice: ");
+            return int.Parse(Console.ReadLine());
         }
 
-        public void ExecuteChoice(MenuContext context)
+        public bool IsMenuChoiceValid(MenuContext context, int menuChoice)
         {
-            switch (context) 
+            if (context == MenuContext.MainMenu && menuChoice >= 0 && menuChoice <= 5)
             {
-                case MenuContext.MainMenu:
-                    ExecuteMainMenuChoice();
-                    break;
-                default:
-                    Console.WriteLine("Menu context does not exist.");
-                    break;
+                MenuChoice = menuChoice;
+                Context = context;
+                return true;
+            }
+            else if (context == MenuContext.Customers && menuChoice >= 0 && menuChoice <= 4)
+            {
+                MenuChoice = menuChoice;
+                return true;
+            }
+            else if (context == MenuContext.Accounts && menuChoice >= 0 && menuChoice <= 4)
+            {
+                MenuChoice = menuChoice;
+                return true;
+            }
+
+            Console.WriteLine($"The Menu Context {context} does not contain menu choice {menuChoice}.");
+            return false;
+        }
+
+        public void ExecuteChoice()
+        {
+            if (Context == MenuContext.MainMenu)
+            {
+                switch (MenuChoice)
+                {
+                    case BankConstants.CustomersChoice:
+                        Context = MenuContext.Customers;
+                        ExecuteChoice();
+                        break;
+                    case BankConstants.AccountsChoice:
+                        Context = MenuContext.Accounts;
+                        ExecuteChoice();
+                        break;
+                    case BankConstants.FundsTransferChoice:
+                        //To-do
+                        break;
+                    case BankConstants.FundsStatementChoice:
+                        //To-do
+                        break;
+                    case BankConstants.AccountStatementChoice:
+                        //To-do
+                        break;
+                    case BankConstants.ExitChoice:
+                        Console.WriteLine("\nExiting Application.");
+                        break;
+                }
+            }
+            else
+            {
+                ExecuteMainMenuChoice();
             }
         }
 
         private void ExecuteMainMenuChoice()
         {
-            switch (MenuChoice)
+            var repeatMenu = true;
+
+            do
             {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 0:
-                    break;
-                default:
-                    Console.WriteLine($"Menu choice {MenuChoice} in the main menu does not exist.");
-                    break;
+                Helper.DisplayMenu(Context);
+
+                if (IsMenuChoiceValid(Context, GetMenuChoice()))
+                {
+                    ExecuteInnerChoice();
+
+                    if (MenuChoice == BankConstants.ExitChoice)
+                    {
+                        repeatMenu = false;
+                        MenuChoice = BankConstants.DefaultChoice;
+                    }
+                }
+            }
+            while (repeatMenu);
+        }
+
+        private void ExecuteInnerChoice()
+        {
+            if (Context == MenuContext.Customers)
+            {
+                switch (MenuChoice)
+                {
+                    case BankConstants.AddCustomerChoice:
+                        Console.WriteLine("Doing something.");
+                        break;
+                    case BankConstants.DeleteCustomerChoice:
+                        //To-do
+                        break;
+                    case BankConstants.UpdateCustomerChoice:
+                        //To-do
+                        break;
+                    case BankConstants.ViewCustomersChoice:
+                        //To-do
+                        break;
+                    case BankConstants.ExitChoice:
+                        Console.WriteLine("Exiting Customers Menu");
+                        break;
+                    default:
+                        Console.WriteLine($"Menu choice {MenuChoice} in the customers menu does not exist.");
+                        break;
+                }
+            }
+            else if (Context == MenuContext.Accounts)
+            {
+                switch (MenuChoice)
+                {
+                    case BankConstants.AddAccountChoice:
+                        //To-do
+                        break;
+                    case BankConstants.DeleteAccountChoice:
+                        //To-do
+                        break;
+                    case BankConstants.UpdateAccountChoice:
+                        //To-do
+                        break;
+                    case BankConstants.ViewAccountsChoice:
+                        //To-do
+                        break;
+                    case BankConstants.ExitChoice:
+                        Console.WriteLine("Exiting Accounts Menu");
+                        break;
+                    default:
+                        Console.WriteLine($"Menu choice {MenuChoice} in the accounts menu does not exist.");
+                        break;
+                }
             }
         }
     }

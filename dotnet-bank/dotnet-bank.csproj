@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountChecker\Authenticator.cs" />
+    <Compile Include="Helpers\BankConstants.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Menu\MenuContext.cs" />
     <Compile Include="Menu\MenuManager.cs" />

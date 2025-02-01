@@ -8,7 +8,9 @@ namespace dotnet_bank.Menu
 {
     public enum MenuContext
     {
-        None = 0,
-        MainMenu = 1,
+        None = -1,
+        MainMenu = 0,
+        Customers = 1,
+        Accounts = 2,
     }
 }
