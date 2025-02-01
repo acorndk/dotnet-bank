@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-bank", "dotnet-bank.csproj", "{B6082055-5A53-47AA-90AF-AA5F38CB47CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-bank-tests", "..\dotnet_bank_tests\dotnet-bank-tests.csproj", "{4BA6AF90-B7AB-4EAD-AC52-5A5B51973660}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-bank-tests", "..\dotnet-bank-tests\dotnet-bank-tests.csproj", "{B8A9156C-8C2D-4053-858A-3B6201530B23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{B6082055-5A53-47AA-90AF-AA5F38CB47CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6082055-5A53-47AA-90AF-AA5F38CB47CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6082055-5A53-47AA-90AF-AA5F38CB47CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BA6AF90-B7AB-4EAD-AC52-5A5B51973660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BA6AF90-B7AB-4EAD-AC52-5A5B51973660}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BA6AF90-B7AB-4EAD-AC52-5A5B51973660}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BA6AF90-B7AB-4EAD-AC52-5A5B51973660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A9156C-8C2D-4053-858A-3B6201530B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A9156C-8C2D-4053-858A-3B6201530B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A9156C-8C2D-4053-858A-3B6201530B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A9156C-8C2D-4053-858A-3B6201530B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
